@@ -426,9 +426,10 @@ public class StatsLib {
             }
         }
     }
-   /*
-    * This method was created to test all of the methods above
-    */
+   
+    /**
+     * This method tests methods above
+     */
     public void results(){
         int[] testList = {2,5,5,7,17,17,17,23,56,87,99};
         ArrayList<String> test1 = new ArrayList<>();
