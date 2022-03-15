@@ -1,6 +1,8 @@
 package GraphFunction;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -8,6 +10,8 @@ import java.util.Random;
 public class salter {
     private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
+	private BufferedReader bufferedReader;
+
     //takes in a csv file, loop through +/- random number
     //output csv file 
     //makes bounds configureable
@@ -19,22 +23,30 @@ public class salter {
 			System.out.println("Error Occured: " + e.toString());
 		}
     }
+
     public void createSaltData() {
 		bufferWriter = new BufferedWriter(fileWriter);
-		
 		try {
+		bufferedReader = new BufferedReader(new FileReader("Plotter.csv"));
 		bufferWriter.write("X " + "," + " Y \n");
 		} catch (Exception e) {
 			System.out.println("ERROR OCCURED: " + e.toString());
 		}
-		for(int i = 0; i <= 1000; i++ ) {
-			try {
-				int idNum = i;
-				double funcNum = (2*Math.pow(i, 2)) + 5;
-				bufferWriter.write(idNum + "," + funcNum + "\n");
-			} catch (Exception e) {
-				System.out.println("ERROR OCCURED: " + e.toString());
+		try {
+			while(bufferedReader.readLine() != null) {
+				try {
+					String line = bufferedReader.readLine();
+					/*
+					double funcNum = (2*Math.pow(i, 2)) + 5;
+					bufferWriter.write(idNum + "," + funcNum + "\n");
+					*/
+				} catch (Exception e) {
+					System.out.println("ERROR OCCURED: " + e.toString());
+				}
 			}
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		try {
 			bufferWriter.close();
@@ -55,4 +67,18 @@ public class salter {
         }
         return y;
     }
+	public void test() throws IOException{
+		bufferWriter = new BufferedWriter(fileWriter);
+		try {
+		bufferedReader = new BufferedReader(new FileReader("Plotter.csv"));
+		} catch (Exception e) {
+			System.out.println("ERROR OCCURED: " + e.toString());
+		}
+		while(bufferedReader.readLine() != null) {
+			String line = bufferedReader.readLine();
+			System.out.println(line);
+				
+			
+		}
+	} 
 }
