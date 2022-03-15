@@ -33,23 +33,24 @@ public class salter {
 		} catch (Exception e) {
 			System.out.println("ERROR OCCURED: " + e.toString());
 		}
-		try {
-			while(bufferedReader.readLine() != null) {
-				try {
-					String line = bufferedReader.readLine();
-					/*
-					double funcNum = (2*Math.pow(i, 2)) + 5;
-					bufferWriter.write(count + "," + funcNum + "\n");
-					*/
-				} catch (Exception e) {
-					System.out.println("ERROR OCCURED: " + e.toString());
+			try {
+				while(bufferedReader.readLine() != null) {
+					try {
+						String line = bufferedReader.readLine();
+						/*
+						double funcNum = (2*Math.pow(i, 2)) + 5;
+						bufferWriter.write(count + "," + funcNum + "\n");
+						*/
+					} catch (Exception e) {
+						System.out.println("ERROR OCCURED: " + e.toString());
+					}
+					count++;
 				}
-				count++;
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		
 		try {
 			bufferWriter.close();
 		} catch (IOException e) {
