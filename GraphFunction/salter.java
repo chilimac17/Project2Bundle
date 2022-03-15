@@ -26,6 +26,7 @@ public class salter {
 
     public void createSaltData() {
 		bufferWriter = new BufferedWriter(fileWriter);
+		int count = 0;
 		try {
 		bufferedReader = new BufferedReader(new FileReader("Plotter.csv"));
 		bufferWriter.write("X " + "," + " Y \n");
@@ -38,11 +39,12 @@ public class salter {
 					String line = bufferedReader.readLine();
 					/*
 					double funcNum = (2*Math.pow(i, 2)) + 5;
-					bufferWriter.write(idNum + "," + funcNum + "\n");
+					bufferWriter.write(count + "," + funcNum + "\n");
 					*/
 				} catch (Exception e) {
 					System.out.println("ERROR OCCURED: " + e.toString());
 				}
+				count++;
 			}
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -67,18 +69,4 @@ public class salter {
         }
         return y;
     }
-	public void test() throws IOException{
-		bufferWriter = new BufferedWriter(fileWriter);
-		try {
-		bufferedReader = new BufferedReader(new FileReader("Plotter.csv"));
-		} catch (Exception e) {
-			System.out.println("ERROR OCCURED: " + e.toString());
-		}
-		while(bufferedReader.readLine() != null) {
-			String line = bufferedReader.readLine();
-			System.out.println(line);
-				
-			
-		}
-	} 
 }
