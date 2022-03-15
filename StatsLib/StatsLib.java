@@ -273,8 +273,9 @@ public class StatsLib {
         return complimentList;
     }
     /**
-     * this method binomial distribution
-     * this method takes in 
+     * this method takes in the probability of your favorable event as p and takes the compliment of
+     * that probability as q. The number of trials as n and number of times for a specific outcomes from
+     * n trials. 
      * @param p
      * @param q
      * @param n
@@ -283,6 +284,24 @@ public class StatsLib {
      */
     public double getBinomialDistribution(double p, double q, int n, int y){
         double binomialDistribution = 0;
+        double comb = findCombinationProb(n, y);
+        p = Math.pow(p, y);
+        q = Math.pow(q, n-y);
+        binomialDistribution = comb * p * q;
+         return binomialDistribution;
+    }
+    /**
+     * this method takes in the probability of your favorable event as p.
+     * The number of trials as n and number of times for a specific outcomes from
+     * n trials. 
+     * @param p
+     * @param n
+     * @param y
+     * @return binomial distribution 
+     */
+    public double getBinomialDistribution2(double p,int n, int y){
+        double binomialDistribution = 0;
+        double q = (1-p);
         double comb = findCombinationProb(n, y);
         p = Math.pow(p, y);
         q = Math.pow(q, n-y);
@@ -301,6 +320,21 @@ public class StatsLib {
      */
     public double getBinomialDistributionEC(double p, double q, double n, double y,String eq){
         double binomialDistribution = 0;
+        char greatOrLess = eq.charAt(0);
+        if(greatOrLess == '<'){
+            for(int i = 0; i <= y; i++){
+                binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+              }
+        }
+        if(greatOrLess == '>'){
+            for(int i = (int)y; i <= n; i++){
+                binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+            }
+        }else{
+            System.out.println("Please enter either <= or >= as the last parameter");
+        }
+
+        /*
         switch(eq){
             case "<=":
                 for(int i = 0; i <= y; i++){
@@ -317,9 +351,55 @@ public class StatsLib {
                 System.out.println("Please enter either <= or >= as the last parameter");
 
         }
+        */
         return binomialDistribution;
     }
-    
+    /**
+     * extra credit handles <=,>=
+     * @param p
+     * @param q
+     * @param n
+     * @param y
+     * @param eq
+     * @return binomial distribution
+     */
+    public double getBinomialDistributionEC2(double p,double n, double y,String eq){
+        double binomialDistribution = 0;
+        double q = (1-p);
+        char greatOrLess = eq.charAt(0);
+        if(greatOrLess == '<'){
+            for(int i = 0; i <= y; i++){
+                binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+              }
+        }
+        if(greatOrLess == '>'){
+            for(int i = (int)y; i <= n; i++){
+                binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+            }
+        }else{
+            System.out.println("Please enter either <= or >= as the last parameter");
+        }
+
+        /*
+        switch(eq){
+            case "<=":
+                for(int i = 0; i <= y; i++){
+                  binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+                }
+                break;
+                
+            case ">=":
+                for(int i = (int)y; i <= n; i++){
+                    binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
+                }
+                break;
+            default:
+                System.out.println("Please enter either <= or >= as the last parameter");
+
+        }
+        */
+        return binomialDistribution;
+    }
     /**
      * This method takes in as input the 
      * @param q
@@ -349,7 +429,30 @@ public class StatsLib {
         hyperGeoDIstribution = (comb1 * comb2) / totalComb;
         return hyperGeoDIstribution;
     }
+    /**
+     * Poisson dis
+     * @param lam
+     * @param y
+     * @return
+     */
+    public double getPoissonDistribution(double lam,double y){
+        double poissonDistribution =0;
+        double e = 2.7182818;
+        double top = Math.pow(lam, y);
+        double bottom = factorial(y);
+        double multE = Math.pow(e, lam);
+        poissonDistribution = (top/bottom) * multE;
+        return poissonDistribution;
+    }
+    /**
+     * chebyshev 
+     * @return
+     */
+    public double getChebyshev(){
+        double chebyshev = 0;
 
+        return chebyshev;
+    }
     /**
      * This method will get the factorial of a big integer
      * @param n
