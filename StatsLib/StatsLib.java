@@ -455,7 +455,7 @@ public class StatsLib {
      */
     public double getChebyshev(){
         double chebyshev = 0;
-
+        
         return chebyshev;
     }
     /**
