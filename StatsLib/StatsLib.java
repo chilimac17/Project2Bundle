@@ -274,6 +274,7 @@ public class StatsLib {
     }
     /**
      * this method binomial distribution
+     * this method takes in 
      * @param p
      * @param q
      * @param n
