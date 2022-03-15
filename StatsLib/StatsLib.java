@@ -356,6 +356,10 @@ public class StatsLib {
     }
     /**
      * extra credit handles <=,>=
+     * this method takes in the probability of your favorable event as p.
+     * The number of trials as n and number of times for a specific outcomes from
+     * n trials. It also takes in a string that can either be <= or >= to show ------
+     * 
      * @param p
      * @param q
      * @param n
@@ -401,7 +405,8 @@ public class StatsLib {
         return binomialDistribution;
     }
     /**
-     * This method takes in as input the 
+     * This method takes in as input the probability of an event occuring as p
+     * the compliment of that event occuring as q and how every many trials until success as y
      * @param q
      * @param p
      * @param y
