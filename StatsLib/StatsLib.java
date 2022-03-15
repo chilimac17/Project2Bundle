@@ -350,7 +350,7 @@ public class StatsLib {
     }
 
     /**
-     * This method will 
+     * This method will get the factorial of a big integer
      * @param n
      * @return factotrial of a big integer
      */
