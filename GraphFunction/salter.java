@@ -1,16 +1,19 @@
 package GraphFunction;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class salter {
+	//File Path: ~/Code/GitHub/Project2Bundle/Plotter.csv
     private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
-	private BufferedReader bufferedReader;
+	File inputFile = new File("Plotter.csv");
+	private Scanner csvReader;
+	
 
     //takes in a csv file, loop through +/- random number
     //output csv file 
@@ -28,40 +31,38 @@ public class salter {
 		bufferWriter = new BufferedWriter(fileWriter);
 		int count = 0;
 		try {
-		bufferedReader = new BufferedReader(new FileReader("Plotter.csv"));
+		csvReader = new Scanner(inputFile);
 		bufferWriter.write("X " + "," + " Y \n");
 		} catch (Exception e) {
 			System.out.println("ERROR OCCURED: " + e.toString());
 		}
-			try {
-				while(bufferedReader.readLine() != null) {
-					try {
-						String line = bufferedReader.readLine();
-						/*
-						double funcNum = (2*Math.pow(i, 2)) + 5;
-						bufferWriter.write(count + "," + funcNum + "\n");
-						*/
-					} catch (Exception e) {
-						System.out.println("ERROR OCCURED: " + e.toString());
-					}
-					count++;
-				}
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+		while(csvReader.hasNextLine()){
+			
+		try {
+			String line = csvReader.next();
+			int comma = line.indexOf(",");
+			if(count >= 1){
+				double x = Double.valueOf(line.substring(0,comma));
+				double y = Double.valueOf(line.substring(comma+1));
+				y = newY(y);
+				System.out.println("x: " + x +"y:" + y);
+				bufferWriter.write(x + "," + y + "\n");	
 			}
-		
+			count++;
+			} catch (Exception e) {
+				System.out.println("ERROR OCCURED: " + e.toString());
+			}
+		}
 		try {
 			bufferWriter.close();
-		} catch (IOException e) {
+			} catch (IOException e) {
 			
 			e.printStackTrace();
-		}
-		
+			}
 	}
     public double newY(double y){
         Random rng = new Random();
-        int addOrSub = rng.nextInt(20);
+        int addOrSub = rng.nextInt(20) + 1;
         int decision = rng.nextInt(2);
         if(decision == 0){
             y = y + addOrSub;
