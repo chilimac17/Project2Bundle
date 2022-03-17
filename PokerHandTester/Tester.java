@@ -14,6 +14,13 @@ public class Tester {
         hand = n1.drawFive(deck);
 
         d1.printDeck(hand);
+        System.out.println(deck.size());
+
+        hand = n1.drawFive(deck);
+        d1.printDeck(hand);
+        System.out.println(deck.size());
+        
+
     }
     
 }

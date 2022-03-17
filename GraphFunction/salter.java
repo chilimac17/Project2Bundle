@@ -45,7 +45,6 @@ public class salter {
 				double x = Double.valueOf(line.substring(0,comma));
 				double y = Double.valueOf(line.substring(comma+1));
 				y = newY(y);
-				System.out.println("x: " + x +"y:" + y);
 				bufferWriter.write(x + "," + y + "\n");	
 			}
 			count++;
