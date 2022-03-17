@@ -12,13 +12,18 @@ public class Tester {
         deck = d1.addCardsToDeck();
         deck = d1.shuffleDeck(deck);
         hand = n1.drawFive(deck);
-
+        /*
         d1.printDeck(hand);
         System.out.println(deck.size());
 
         hand = n1.drawFive(deck);
         d1.printDeck(hand);
         System.out.println(deck.size());
+        */
+        System.out.println("Chances of getting a pair in blank runs: " + n1.pairTest(10000));
+        System.out.println("Chances of getting a 3 of a kind in blank runs: " + n1.threeOfAKind(10000));
+        System.out.println("Chances of getting a 4 of a kind in blank runs: " + n1.fourOfAKind(10000));
+
         
 
     }
