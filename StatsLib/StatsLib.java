@@ -419,7 +419,10 @@ public class StatsLib {
         return geoDistribution;
     }
     /**
-     * This method will 
+     * This method will show hypergeometric distribution which takes in the combination probability
+     * of N and n as the total probabilty, r and y as the the first combination probability which we will call 
+     * comb1, and N-r, n-y as the second combination probability calling it comb2. Then it will multiply
+     * comb1 and comb 2 and divide by the total probability. 
      * @param r
      * @param y
      * @param n
@@ -435,27 +438,41 @@ public class StatsLib {
         return hyperGeoDIstribution;
     }
     /**
-     * Poisson dis
+     * In this method we will take in lambada and y which is the max value you are testing for your pmf
+     * For example: if y = 4 then this method will compute y=0,y=1,y=2,y=3,y=4.
      * @param lam
      * @param y
-     * @return
+     * @return poisson distribution
      */
     public double getPoissonDistribution(double lam,double y){
         double poissonDistribution =0;
         double e = 2.7182818;
-        double top = Math.pow(lam, y);
-        double bottom = factorial(y);
-        double multE = Math.pow(e, lam);
-        poissonDistribution = (top/bottom) * multE;
+        for(int i =0; i < y; i++){
+            double top = Math.pow(lam, i);
+            double bottom = factorial(i);
+            double multE = Math.pow(e, lam);
+            double answer = (top/bottom) * multE;
+            poissonDistribution += answer;
+        }
         return poissonDistribution;
     }
     /**
-     * chebyshev 
+     * This method takes in the standard deviation, the mean, and the upper and lower bounds
+     * first the method will verify the the within number with the upper and lower bounds 
+     * after it uses the within number to find the k value. Once k value is found it will use
+     * the formula 1 - (1/k^2) to get the answer. 
      * @return
      */
-    public double getChebyshev(){
+    public double getChebyshev(double std, double mean, double lowerBound, double upperBound){
         double chebyshev = 0;
-        
+        double within;
+        double upper = upperBound - mean;
+        double lower = mean -lowerBound;
+        if(upper == lower){
+            within = upper;
+            double k = within / std;
+            chebyshev = 1 - (1/Math.pow(k, 2));
+        }
         return chebyshev;
     }
     /**
