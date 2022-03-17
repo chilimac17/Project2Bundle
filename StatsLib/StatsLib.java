@@ -330,8 +330,6 @@ public class StatsLib {
             for(int i = (int)y; i <= n; i++){
                 binomialDistribution  += getBinomialDistribution(p, q,(int)n, i);
             }
-        }else{
-            System.out.println("Please enter either <= or >= as the last parameter");
         }
 
         /*
@@ -460,7 +458,8 @@ public class StatsLib {
      * This method takes in the standard deviation, the mean, and the upper and lower bounds
      * first the method will verify the the within number with the upper and lower bounds 
      * after it uses the within number to find the k value. Once k value is found it will use
-     * the formula 1 - (1/k^2) to get the answer. 
+     * the formula 1 - (1/k^2) to get the answer. If the within number is not verified then the method will
+     * return 0.
      * @return
      */
     public double getChebyshev(double std, double mean, double lowerBound, double upperBound){
@@ -476,7 +475,7 @@ public class StatsLib {
         return chebyshev;
     }
     /**
-     * This method will get the factorial of a big integer
+     * This method will get the factorial of a int and return it as a big integer
      * @param n
      * @return factotrial of a big integer
      */
@@ -580,6 +579,15 @@ public class StatsLib {
         System.out.println("The union of the list 1 and list 2 is " + getUnion(test1, test2));
         System.out.println("The intersection of the list 1 and list 2 is " + getIntersection(test1, test2));
         System.out.println("The compliment of the list 3 is " + getCompliment(test3));
-
+        
+        System.out.println("Binomial Dis: " + getBinomialDistribution(0.2, 0.8, 3, 2));
+        System.out.println("Binomial Dis2: " + getBinomialDistribution2(0.2, 3, 2));
+        System.out.println("Binomial DisEC: " + getBinomialDistributionEC(0.2, 0.8, 3, 2, "<="));
+        System.out.println("Binomial DisEC2: " + getBinomialDistributionEC2(0.2, 3, 2, ">="));
+        System.out.println("Geo Dis: " + getGeometricDistribution(0.8, 0.2, 3));
+        System.out.println("HyperGeo Dis: " + getHyperGeometricDistribution(6, 4, 5, 20));
+        System.out.println("Poisson Dis: " + getPoissonDistribution(5, 3));
+        System.out.println("Chebyshev Dis: " + getChebyshev(5, 75, 50, 100));
+        System.out.println("Big Integer: " + factorialOfBigInts(10));
     }
 }

@@ -6,6 +6,5 @@ public class TestStatsLib {
         StatsLib s1 = new StatsLib();
         s1.results();
 
-        System.out.println(s1.factorialOfBigInts(10));
     }
 }
