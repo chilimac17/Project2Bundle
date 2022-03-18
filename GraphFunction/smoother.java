@@ -22,16 +22,23 @@ public class smoother {
 		}
     }
     public void createSmoothData(int window){
+		//creating variables
         bufferWriter = new BufferedWriter(fileWriter);
         ArrayList<Double> xValList = new ArrayList<>(); 
         ArrayList<Double> yValList = new ArrayList<>(); 
 		int count = 0;
+		double yVal;
+		double temp = 0;
+		double temp2 = 0;
+		int diff = 0;
+		//create top of csv
 		try {
 		csvReader = new Scanner(inputFile);
 		bufferWriter.write("X " + "," + " Y \n");
 		} catch (Exception e) {
 			System.out.println("ERROR OCCURED: " + e.toString());
 		}
+		//go through csv and add vals to arraylists
 		while(csvReader.hasNextLine()){	
 		    try {
 			    String line = csvReader.next();
@@ -47,11 +54,50 @@ public class smoother {
 				    System.out.println("ERROR OCCURED: " + e.toString());
 			    }
 		}
-
+		//smooth out data 
+		for(int i = 1; i < xValList.size(); i++){
+			yVal = yValList.get(i);
+			int check = 0;
+			for(int j =0; j < window; j++){
+				double val = yValList.get(j);
+				temp += val;
+			}
+			if(i - window < 0){
+				diff = Math.abs(i-window);
+				check = 1;
+				for(int k=i-1; k > diff; i--){
+					double prev = yValList.get(k);
+					temp2 += prev;
+				}
+			}else{
+				for(int m = i-1; m > window; m--){
+					double prev = yValList.get(m);
+					temp2 += prev;
+				}
+			}
+			double newVal = temp + temp2 + yValList.get(i);
+			if(check == 1){
+				int divide = window + diff + 1;
+				newVal = newVal/divide;
+			}else{
+				newVal = newVal/(window + window + 1);
+			}
+			yValList.set(i, newVal);
+		}
+		for(int i = 1; i < xValList.size(); i++){
+			double n1 = xValList.get(i);
+			double n2 = yValList.get(i);
+			try {
+				bufferWriter.write( n1 + "," + n2 + "\n");
+			} catch (IOException e) {
+				System.out.println("ERROR OCCURED: " + e.toString());
+				e.printStackTrace();
+			}
+		}
 		try {
 			bufferWriter.close();
 			} catch (IOException e) {
-			
+				
 			e.printStackTrace();
 			}
     }
