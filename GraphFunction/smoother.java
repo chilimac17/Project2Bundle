@@ -13,6 +13,7 @@ public class smoother {
     private BufferedWriter bufferWriter;
 	File inputFile = new File("Salter.csv");
 	private Scanner csvReader;
+	//contructor
     public smoother(){
         try {
 			//.csv
@@ -21,6 +22,7 @@ public class smoother {
 			System.out.println("Error Occured: " + e.toString());
 		}
     }
+	//methods
     public void createSmoothData(int window){
 		//creating variables
         bufferWriter = new BufferedWriter(fileWriter);
@@ -36,7 +38,7 @@ public class smoother {
 		csvReader = new Scanner(inputFile);
 		bufferWriter.write("X " + "," + " Y \n");
 		} catch (Exception e) {
-			System.out.println("ERROR OCCURED: " + e.toString());
+			System.out.println("ERROR OCCURED: " + e.toString() + "0");
 		}
 		//go through csv and add vals to arraylists
 		while(csvReader.hasNextLine()){	
@@ -49,24 +51,25 @@ public class smoother {
 				    xValList.add(x);
                     yValList.add(y);
 			    }
-			    count++;
 			} catch (Exception e) {
-				    System.out.println("ERROR OCCURED: " + e.toString());
+				    System.out.println("ERROR OCCURED: " + e.toString() + " 4319");
 			    }
+			count++;
 		}
 		//smooth out data 
-		for(int i = 1; i < xValList.size(); i++){
+		for(int i = 0; i < xValList.size(); i++){
 			yVal = yValList.get(i);
 			int check = 0;
 			for(int j =0; j < window; j++){
-				double val = yValList.get(j);
+				double val = yValList.get(i+j);
 				temp += val;
 			}
+			//fix
 			if(i - window < 0){
 				diff = Math.abs(i-window);
 				check = 1;
 				for(int k=i-1; k > diff; i--){
-					double prev = yValList.get(k);
+					double prev = yValList.get(k-diff);
 					temp2 += prev;
 				}
 			}else{
@@ -75,6 +78,7 @@ public class smoother {
 					temp2 += prev;
 				}
 			}
+			//fix
 			double newVal = temp + temp2 + yValList.get(i);
 			if(check == 1){
 				int divide = window + diff + 1;
@@ -84,13 +88,14 @@ public class smoother {
 			}
 			yValList.set(i, newVal);
 		}
-		for(int i = 1; i < xValList.size(); i++){
+
+		for(int i = 0; i < xValList.size(); i++){
 			double n1 = xValList.get(i);
 			double n2 = yValList.get(i);
 			try {
 				bufferWriter.write( n1 + "," + n2 + "\n");
 			} catch (IOException e) {
-				System.out.println("ERROR OCCURED: " + e.toString());
+				System.out.println("ERROR OCCURED: " + e.toString() + "2");
 				e.printStackTrace();
 			}
 		}

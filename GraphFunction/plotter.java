@@ -42,7 +42,7 @@ public class plotter {
 		for(int i = 0; i <= 1000; i++ ) {
 			try {
 				int idNum = i;
-				double funcNum = (2*Math.pow(i, 2)) + 5;
+				double funcNum = Math.pow(i, 2) + 5;
 				bufferWriter.write(idNum + "," + funcNum + "\n");
 			} catch (Exception e) {
 				System.out.println("ERROR OCCURED: " + e.toString());

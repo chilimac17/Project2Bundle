@@ -61,7 +61,7 @@ public class salter {
 	}
     public double newY(double y){
         Random rng = new Random();
-        int addOrSub = rng.nextInt(20) + 1;
+        int addOrSub = rng.nextInt(600) + 1;
         int decision = rng.nextInt(2);
         if(decision == 0){
             y = y + addOrSub;
