@@ -1,6 +1,5 @@
 package GraphFunction;
 
-import java.io.IOException;
 
 public class GraphFunctionTester {
     public static void main(String[] args){
