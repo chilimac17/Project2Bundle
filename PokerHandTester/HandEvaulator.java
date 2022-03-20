@@ -202,7 +202,7 @@ public class HandEvaulator {
             result += count; 
         }
 
-        result = (result/trials) * 100* 100;
+        result = (result/trials) * 100;
         return result;
     }
     public double flushTest(int trials){
