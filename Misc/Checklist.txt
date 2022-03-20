@@ -1,7 +1,7 @@
 Project Bundle 2 Checklist
-- Update Stats Lib
+X Update Stats Lib
 - Graph Function
-- Poker Hand Tester
+X Poker Hand Tester
 - Screenshots
 - 2 Page Paper
 - Formula Sheet
