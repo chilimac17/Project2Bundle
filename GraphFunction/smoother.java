@@ -31,32 +31,58 @@ public class smoother {
 
 		//reading csvfile and filling x and y values in the lists created above
 		xValList = csvToArrayList(1);
-		yValList = csvToArrayList(2);
+		//yValList = csvToArrayList(2);
+		//printArrayList(xValList);
+		/*
+		yValList = smoothData(yValList);
 
-		printArrayList(xValList);
-		//printArrayList(yValList);
-
+		try {
+			bufferWriter.write("X " + "," + " Y \n");
+			} catch (Exception e) {
+				System.out.println("ERROR OCCURED: " + e.toString() + "0");
+			}
+			for(int i = 0; i < xValList.size(); i++){
+				double n1 = xValList.get(i);
+				double n2 = yValList.get(i);
+				try {
+					bufferWriter.write( n1 + "," + n2 + "\n");
+				} catch (IOException e) {
+					System.out.println("ERROR OCCURED: " + e.toString() + "2");
+					e.printStackTrace();
+				}
+			}
+			try {
+				bufferWriter.close();
+				} catch (IOException e) {
+					
+				e.printStackTrace();
+				}
+				*/
     }
+	public ArrayList<Double> smoothData(ArrayList<Double> list){
+		ArrayList<Double> newList = new ArrayList<>();
+
+		return newList;
+	}
 	public ArrayList<Double> csvToArrayList(int num){
-		
 		ArrayList<Double> filledList = new ArrayList<>();
+		int count = 0;
 		
 		if(num == 1){
 			try{
 				csvReader = new Scanner(inputFile);
-				String line1 = null;
-				while((line1 = csvReader.nextLine()) != null){	
+				while(csvReader.hasNextLine()){	
 					try {
 						String line = csvReader.next();
 						int comma = line.indexOf(",");
-						
+						if(count >= 1){
 							double x = Double.valueOf(line.substring(0,comma));
 							filledList.add(x);	
-						
+						}
+						count++;
 					} catch (Exception e) {
 							System.out.println("ERROR OCCURED: " + e.toString() + " 1");
 						}
-					
 				}
 			}catch (Exception e) {
 				System.out.println("ERROR OCCURED: " + e.toString() + " 2");
@@ -85,7 +111,7 @@ public class smoother {
             if(i == list.size()-1){
                 System.out.print(list.get(i));
             }else{
-            System.out.print(list.get(i) + ", \n");
+            System.out.print(list.get(i) + "\n");
             }
         }
     }
