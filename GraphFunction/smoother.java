@@ -31,9 +31,7 @@ public class smoother {
          
 		//reading csvfile and filling x and y values in the lists created above
 		csvToArrayList(xValList,yValList);
-		
-		
-		/*
+		printArrayList(yValList);
 		yValList = smoothData(yValList);
 
 		try {
@@ -57,7 +55,7 @@ public class smoother {
 					
 				e.printStackTrace();
 				}
-				*/
+				
     }
 	public ArrayList<Double> smoothData(ArrayList<Double> list){
 		ArrayList<Double> newList = new ArrayList<>();
@@ -68,15 +66,14 @@ public class smoother {
 			String line = "linezz";
 			try{
 				csvReader = new Scanner(inputFile);
-				String headline = csvReader.next();
+				String headline = csvReader.nextLine();
 				while(csvReader.hasNextLine()){		
-					line = csvReader.next();
+					line = csvReader.nextLine();
 					String[] row = line.split(",");
 					String xVal = row[0];
 					String yVal = row[1];
 					xlist.add(Double.valueOf(xVal));
-					xlist.add(Double.valueOf(yVal));
-					
+					ylist.add(Double.valueOf(yVal));
 				}
 			}catch(Exception e){
 				System.out.println("ERROR1" + e.toString() + "THIS IS LINE: "+ line);
