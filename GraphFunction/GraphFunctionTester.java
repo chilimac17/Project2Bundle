@@ -8,6 +8,7 @@ public class GraphFunctionTester {
         smoother sm1 = new smoother();
         //p1.createData();
         //s1.createSaltData();
-        sm1.createSmoothData(2);
+        sm1.createSmoothData();
     }
 }
+

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class smoother {
-    //takes in csv, loop through and replace y values 
-    private FileWriter fileWriter;
+	private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
 	File inputFile = new File("Salter.csv");
 	private Scanner csvReader;
 	//contructor
     public smoother(){
+
         try {
 			//.csv
 			fileWriter = new FileWriter("Smoother.csv");
@@ -23,7 +23,76 @@ public class smoother {
 		}
     }
 	//methods
-    public void createSmoothData(int window){
+    public void createSmoothData(){
+		//add window = 2
+		bufferWriter = new BufferedWriter(fileWriter);
+        ArrayList<Double> xValList = new ArrayList<>(); 
+        ArrayList<Double> yValList = new ArrayList<>(); 
+
+		//reading csvfile and filling x and y values in the lists created above
+		xValList = csvToArrayList(1);
+		yValList = csvToArrayList(2);
+
+		printArrayList(xValList);
+		//printArrayList(yValList);
+
+    }
+	public ArrayList<Double> csvToArrayList(int num){
+		
+		ArrayList<Double> filledList = new ArrayList<>();
+		
+		if(num == 1){
+			try{
+				csvReader = new Scanner(inputFile);
+				String line1 = null;
+				while((line1 = csvReader.nextLine()) != null){	
+					try {
+						String line = csvReader.next();
+						int comma = line.indexOf(",");
+						
+							double x = Double.valueOf(line.substring(0,comma));
+							filledList.add(x);	
+						
+					} catch (Exception e) {
+							System.out.println("ERROR OCCURED: " + e.toString() + " 1");
+						}
+					
+				}
+			}catch (Exception e) {
+				System.out.println("ERROR OCCURED: " + e.toString() + " 2");
+			}
+			
+		}else if(num ==2){
+			while(csvReader.hasNextLine()){	
+				try {
+					String line = csvReader.next();
+					int comma = line.indexOf(",");
+					
+						double y = Double.valueOf(line.substring(comma+1));
+						filledList.add(y);	
+					
+				} catch (Exception e) {
+						System.out.println("ERROR OCCURED: " + e.toString() + " 3");
+					}
+				
+			}
+		}
+
+		return filledList;
+	}
+	public void printArrayList(ArrayList<Double> list){
+        for(int i =0; i < list.size(); i++){
+            if(i == list.size()-1){
+                System.out.print(list.get(i));
+            }else{
+            System.out.print(list.get(i) + ", \n");
+            }
+        }
+    }
+}
+
+/**
+	 * 
 		//creating variables
         bufferWriter = new BufferedWriter(fileWriter);
         ArrayList<Double> xValList = new ArrayList<>(); 
@@ -105,5 +174,4 @@ public class smoother {
 				
 			e.printStackTrace();
 			}
-    }
-}
+	 */
