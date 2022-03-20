@@ -12,6 +12,8 @@ public class smoother {
     private BufferedWriter bufferWriter;
 	File inputFile = new File("Salter.csv");
 	private Scanner csvReader;
+	private ArrayList<Double> xValList = new ArrayList<>(); 
+    private ArrayList<Double> yValList = new ArrayList<>();
 	//contructor
     public smoother(){
 
@@ -26,13 +28,11 @@ public class smoother {
     public void createSmoothData(){
 		//add window = 2
 		bufferWriter = new BufferedWriter(fileWriter);
-        ArrayList<Double> xValList = new ArrayList<>(); 
-        ArrayList<Double> yValList = new ArrayList<>(); 
-
+         
 		//reading csvfile and filling x and y values in the lists created above
-		xValList = csvToArrayList(1);
-		//yValList = csvToArrayList(2);
-		//printArrayList(xValList);
+		csvToArrayList(xValList,yValList);
+		
+		
 		/*
 		yValList = smoothData(yValList);
 
@@ -61,50 +61,26 @@ public class smoother {
     }
 	public ArrayList<Double> smoothData(ArrayList<Double> list){
 		ArrayList<Double> newList = new ArrayList<>();
-
+		
 		return newList;
 	}
-	public ArrayList<Double> csvToArrayList(int num){
-		ArrayList<Double> filledList = new ArrayList<>();
-		int count = 0;
-		
-		if(num == 1){
+	public void csvToArrayList(ArrayList<Double> xlist,ArrayList<Double> ylist){
+			String line = "linezz";
 			try{
 				csvReader = new Scanner(inputFile);
-				while(csvReader.hasNextLine()){	
-					try {
-						String line = csvReader.next();
-						int comma = line.indexOf(",");
-						if(count >= 1){
-							double x = Double.valueOf(line.substring(0,comma));
-							filledList.add(x);	
-						}
-						count++;
-					} catch (Exception e) {
-							System.out.println("ERROR OCCURED: " + e.toString() + " 1");
-						}
+				String headline = csvReader.next();
+				while(csvReader.hasNextLine()){		
+					line = csvReader.next();
+					String[] row = line.split(",");
+					String xVal = row[0];
+					String yVal = row[1];
+					xlist.add(Double.valueOf(xVal));
+					xlist.add(Double.valueOf(yVal));
+					
 				}
-			}catch (Exception e) {
-				System.out.println("ERROR OCCURED: " + e.toString() + " 2");
+			}catch(Exception e){
+				System.out.println("ERROR1" + e.toString() + "THIS IS LINE: "+ line);
 			}
-			
-		}else if(num ==2){
-			while(csvReader.hasNextLine()){	
-				try {
-					String line = csvReader.next();
-					int comma = line.indexOf(",");
-					
-						double y = Double.valueOf(line.substring(comma+1));
-						filledList.add(y);	
-					
-				} catch (Exception e) {
-						System.out.println("ERROR OCCURED: " + e.toString() + " 3");
-					}
-				
-			}
-		}
-
-		return filledList;
 	}
 	public void printArrayList(ArrayList<Double> list){
         for(int i =0; i < list.size(); i++){
@@ -115,6 +91,12 @@ public class smoother {
             }
         }
     }
+	public ArrayList<Double> getXArray(){
+		return xValList;
+	}
+	public ArrayList<Double> getYArray(){
+		return yValList;
+	}
 }
 
 /**

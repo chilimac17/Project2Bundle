@@ -269,13 +269,13 @@ public class HandEvaulator {
         return result;
     }
     public void testAll(int runs){
-        System.out.println("Chances of getting a pair in " + runs + " runs: " + pairTest(runs));
-        System.out.println("Chances of getting a 3 of a kind in " + runs + " runs: " + threeOfAKind(runs));
-        System.out.println("Chances of getting 2 pair in " + runs +" runs: " + twoPairTest(runs));
-        System.out.println("Chances of getting a full house in " + runs + " runs: " + fullHouseTest(runs));
-        System.out.println("Chances of getting flush in " + runs + " runs: " + flushTest(runs));
-        System.out.println("Chances of getting straight in " + runs + " runs: " + straightTest(runs));
-        System.out.println("Chances of getting a 4 of a kind in " + runs + " runs: " + fourOfAKind(runs));
+        System.out.println("Chances of getting a pair in " + runs + " runs: " + pairTest(runs) + "%");
+        System.out.println("Chances of getting a 3 of a kind in " + runs + " runs: " + threeOfAKind(runs) + "%");
+        System.out.println("Chances of getting 2 pair in " + runs +" runs: " + twoPairTest(runs) + "%");
+        System.out.println("Chances of getting a full house in " + runs + " runs: " + fullHouseTest(runs) + "%");
+        System.out.println("Chances of getting flush in " + runs + " runs: " + flushTest(runs) + "%");
+        System.out.println("Chances of getting straight in " + runs + " runs: " + straightTest(runs) + "%");
+        System.out.println("Chances of getting a 4 of a kind in " + runs + " runs: " + fourOfAKind(runs) + "%");
 
     }
 }
