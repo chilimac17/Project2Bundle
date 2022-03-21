@@ -307,14 +307,44 @@ public class HandEvaulator {
        
     }
     //straight flush
+    public double straightFlushTest(int trials){
+        double result = 0; 
+        Deck d1 = new Deck();
+        ArrayList<Card> deck = new ArrayList<>();
+        ArrayList<Card> hand = new ArrayList<>();
+        for(int i = 0; i < trials; i++){
+            deck = d1.addCardsToDeck();
+            deck = d1.shuffleDeck(deck);
+            hand = drawFive(deck);
+            int count = straightFlushCheck(hand);
+            result += count; 
+        }
+        result = (result/trials) * 100;
+        return result;
+    }
+
+    public int straightFlushCheck(ArrayList<Card> hand){
+        int hit = 0; 
+        if(flushCheck(hand) == 1){
+            if(straightCheck(hand) == 1){
+                hit = 1;
+
+            }
+        }
+        return hit;
+    }
+
     public void testAll(int runs){
         System.out.println("Chances of getting a pair in " + runs + " runs: " + pairTest(runs) + "%");
         System.out.println("Chances of getting a 3 of a kind in " + runs + " runs: " + threeOfAKind(runs) + "%");
-        System.out.println("Chances of getting 2 pair in " + runs +" runs: " + twoPairTest(runs) + "%");
+        System.out.println("Chances of getting 2 pair in " + runs +" runs: " + (twoPairTest(runs) - threeOfAKind(runs)) + "%");
         System.out.println("Chances of getting a full house in " + runs + " runs: " + fullHouseTest(runs) + "%");
         System.out.println("Chances of getting flush in " + runs + " runs: " + flushTest(runs) + "%");
         System.out.println("Chances of getting straight in " + runs + " runs: " + straightTest(runs) + "%");
         System.out.println("Chances of getting a 4 of a kind in " + runs + " runs: " + fourOfAKind(runs) + "%");
         System.out.println("Chances of getting a royal flush in " + runs + " runs: " + royalFlushTest(runs) + "%");
+        System.out.println("Chances of getting a straight flush in " + runs + " runs: " + straightFlushTest(runs) + "%");
+        System.out.println("Chances of getting no pairs in " + runs + " runs: " +(1 - (pairTest(runs)/100)) + "%");
+
     }
 }
