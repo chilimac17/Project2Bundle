@@ -21,7 +21,7 @@ public class HandEvaluator {
      * This method is used to check if a array of card objects has a pair in it. The method will either return a zero or one. If 
      * it returns zero then there is no pair present. If it returns one then a pair is present.
      * @param hand
-     * @return hit
+     * @return int hit
      */
     public int matchCheck(ArrayList<Card> hand){
         int hit = 0;
@@ -110,7 +110,7 @@ public class HandEvaluator {
      * This method is used to check if a array of card objects has 3 pairs in it. The method will either return a zero or one. If 
      * it returns zero then there are no 3 pairs present. If it returns one then three pairs are present.
      * @param hand
-     * @return
+     * @return int hit
      */
     public int matchCheck3(ArrayList<Card> hand){
         int hit = 0;
@@ -155,7 +155,7 @@ public class HandEvaluator {
      * This method will run in a for loop based on trials input and will create a deck, add cards to it, shuffle it. After it uses the matchCheck3 method to return 
      * a 0 or 1. Result will add up all the numbers through out the loop and then divide by the number trials and multiplied by 100 to get your percent. 
      * @param trials
-     * @return
+     * @return double result
      */
     public double threeOfAKind(int trials){
         double result = 0; 

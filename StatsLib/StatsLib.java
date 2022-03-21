@@ -118,7 +118,7 @@ public class StatsLib {
      *  -then takes the square root of that number to get the standard deviation 
      * Lastly it returns that value
      * @param list
-     * @return standard deviation
+     * @return double standard deviation
      */
     public double getStanD(int[] list){
         double stanD = 0;
@@ -149,7 +149,7 @@ public class StatsLib {
      * -then it squares every value in the list
      * -adds up the values in the list and divides by 1 less then the size of the list to get the variance
      * @param list
-     * @return variance
+     * @return double variance
      */
     public double getVari(int[] list){
         double variance = 0;
@@ -177,7 +177,7 @@ public class StatsLib {
      * but i realized that you can use recursion to get the same result and write less code 
      * basically this method will call it self until it gets to the base case which is when num = 0 
      * @param num
-     * @return factorial 
+     * @return double factorial 
      */
     public double factorial(double num){
 		/*
@@ -198,7 +198,7 @@ public class StatsLib {
      *  it follows the formula: (n!) / (r)!*(n-r)!
      * @param n
      * @param r
-     * @return combination probability
+     * @return double combination probability
      */
 	public double findCombinationProb(double n,double r){
 		double answer = 0;
@@ -211,7 +211,7 @@ public class StatsLib {
      * it follows the formula: (n!) / (n-r)!
      * @param n
      * @param r
-     * @return permutation probability
+     * @return double permutation probability
      */
 	public double findPermutationProb(double n, double r){
 		double answer = 0;
@@ -229,7 +229,7 @@ public class StatsLib {
      *  after the second loop is finished i return the new list
      * @param dayOfWeekList
      * @param dayOfWeekList2
-     * @return union of two array lists
+     * @return ArrayList<String> union of two array lists
      */
     public ArrayList<String> getUnion(ArrayList<String> dayOfWeekList,ArrayList<String> dayOfWeekList2){
         ArrayList<String> unionList = new ArrayList<>();
@@ -254,7 +254,7 @@ public class StatsLib {
      *  once the loop is broken it will return the new list
      * @param list1
      * @param list2
-     * @return intersection of two lists
+     * @return ArrayList<String> intersection of two lists
      */
     public ArrayList<String> getIntersection(ArrayList<String> list1,ArrayList<String> list2){
         ArrayList<String> intersectionList = new ArrayList<>();
@@ -277,7 +277,7 @@ public class StatsLib {
      * contain the current element in the premade list add it to the new list at the end of the loop
      * i return the new list  
      * @param list
-     * @return compliment of list
+     * @return ArrayList<String> compliment of list
      */
     public ArrayList<String> getCompliment(ArrayList<String> list){
         ArrayList<String> complimentList = new ArrayList<>();
@@ -299,7 +299,7 @@ public class StatsLib {
      * @param q
      * @param n
      * @param y
-     * @return binomial distribution 
+     * @return double binomial distribution 
      */
     public double getBinomialDistribution(double p, double q, int n, int y){
         double binomialDistribution = 0;
@@ -316,7 +316,7 @@ public class StatsLib {
      * @param p
      * @param n
      * @param y
-     * @return binomial distribution 
+     * @return double binomial distribution 
      */
     public double getBinomialDistribution2(double p,int n, int y){
         double binomialDistribution = 0;
@@ -338,7 +338,7 @@ public class StatsLib {
      * @param n
      * @param y
      * @param eq
-     * @return binomial distribution
+     * @return double binomial distribution
      */
     public double getBinomialDistributionEC(double p, double q, double n, double y,String eq){
         double binomialDistribution = 0;
@@ -385,7 +385,7 @@ public class StatsLib {
      * @param n
      * @param y
      * @param eq
-     * @return binomial distribution
+     * @return double binomial distribution
      */
     public double getBinomialDistributionEC2(double p,double n, double y,String eq){
         double binomialDistribution = 0;
@@ -430,7 +430,7 @@ public class StatsLib {
      * @param q
      * @param p
      * @param y
-     * @return Geometric Distribution
+     * @return double Geometric Distribution
      */
     public double getGeometricDistribution(double q, double p,int y){
         double geoDistribution = 0;
@@ -447,7 +447,7 @@ public class StatsLib {
      * @param y
      * @param n
      * @param N
-     * @return  Hyper Geometric Distribution
+     * @return double Hyper Geometric Distribution
      */
     public double getHyperGeometricDistribution(double r, double y,double n, double N){
         double hyperGeoDIstribution = 0;
@@ -462,7 +462,7 @@ public class StatsLib {
      * For example: if y = 4 then this method will compute y=0,y=1,y=2,y=3,y=4.
      * @param lam
      * @param y
-     * @return poisson distribution
+     * @return double poisson distribution
      */
     public double getPoissonDistribution(double lam,double y){
         double poissonDistribution =0;
@@ -482,7 +482,7 @@ public class StatsLib {
      * after it uses the within number to find the k value. Once k value is found it will use
      * the formula 1 - (1/k^2) to get the answer. If the within number is not verified then the method will
      * return 0.
-     * @return
+     * @return double chebyshev
      */
     public double getChebyshev(double std, double mean, double lowerBound, double upperBound){
         double chebyshev = 0;
@@ -499,7 +499,7 @@ public class StatsLib {
     /**
      * This method will get the factorial of a int and return it as a big integer
      * @param n
-     * @return factotrial of a big integer
+     * @return BigInteger factrorial
      */
     public BigInteger factorialOfBigInts(int n){
         BigInteger bi = new BigInteger("1");
@@ -514,7 +514,7 @@ public class StatsLib {
      * This method is used to populate an array list.
      * it will be used for testing the union, intersection, and compliment methods above
      * @param test
-     * @return a list populated with strings of days of the week
+     * @return ArrayList<String> a list populated with strings of days of the week
      */
     public ArrayList<String> popTest1(ArrayList<String> test){
         String[] daysWeekL = {"Monday","Wednesday","Thursday","Sunday"};
@@ -527,7 +527,7 @@ public class StatsLib {
      * This method is used to populate an array list.
      * it will be used for testing the union, intersection, and compliment methods above
      * @param test
-     * @return a list populated with strings of days of the week
+     * @return ArrayList<String> a list populated with strings of days of the week
      */
     public ArrayList<String> popTest2(ArrayList<String> test){
         String[] daysWeekL = {"Monday","Tuesday","Thursday","Friday","Saturday"};
@@ -540,7 +540,7 @@ public class StatsLib {
      * This method is used to populate an array list.
      * it will be used for testing the union, intersection, and compliment methods above.
      * @param test
-     * @return a list populated with strings of days of the week
+     * @return ArrayList<String> a list populated with strings of days of the week
      */
     public ArrayList<String> popTest3(ArrayList<String> test){
         String[] daysWeekL = {"Tuesday","Friday"};
