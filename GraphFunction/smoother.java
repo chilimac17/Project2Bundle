@@ -6,28 +6,34 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class smoother {
+	/**
+	 * Global Variables
+	 * **File Path: ~/Code/GitHub/Project2Bundle/Salter.csv**
+	 */
 	private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
 	File inputFile = new File("Salter.csv");
 	private Scanner csvReader;
 	private ArrayList<Double> xValList = new ArrayList<>(); 
     private ArrayList<Double> yValList = new ArrayList<>();
-	//contructor
+	/**
+	 * This constructor will use filewriter to create a .CSV file 
+	 */
     public smoother(){
-
         try {
-			//.csv
 			fileWriter = new FileWriter("Smoother.csv");
 		} catch (Exception e) {
 			System.out.println("Error Occured: " + e.toString());
 		}
     }
-	//methods
+	/**
+	 * This method will read the Salter.csv file and save the values to two arrayLists. After it will call a method to smooth the y Values and
+	 * put it in a new list. After it will write to the csv files.  
+	 * @param windowNum
+	 */
     public void createSmoothData(int windowNum){
-		//add window = 2
 		bufferWriter = new BufferedWriter(fileWriter);
          ArrayList<Double> newYVal = new ArrayList<>();
-		//reading csvfile and filling x and y values in the lists created above
 		csvToArrayList(xValList,yValList);
 		newYVal = smoothData(yValList,windowNum);
 
@@ -43,6 +49,13 @@ public class smoother {
 				System.out.println("ERROR OCCURED: " + e.toString() + "0");
 			}			
     }
+	/**
+	 * This method takes in a ArrayList and a window value. It will run a for loop through the list. It will run various checks adjusting to the proper window size
+	 * as the for loop progresses. Once the new y is calculated it will be added to a new list. 
+	 * @param list
+	 * @param windowNum
+	 * @return ArrayList<Double> newList
+	 */
 	public ArrayList<Double> smoothData(ArrayList<Double> list,int windowNum){
 		ArrayList<Double> newList = new ArrayList<>();
 		double sum = 0;
@@ -71,8 +84,15 @@ public class smoother {
 		}
 		return newList;
 	}
+	/**
+	 * This method is used to read the csv file created by plotter and save the x and y values in seperate arrayLists. First it creates a scanner to read the file.
+	 * Then it stores every line and splits it up at the ",". Doing this will have the x and y values saved in position 0 and 1 in the temp array called row. Once the values are
+	 * obtained then it will add them to the proper lists.
+	 * @param xlist
+	 * @param ylist
+	 */
 	public void csvToArrayList(ArrayList<Double> xlist,ArrayList<Double> ylist){
-			String line = "linezz";
+			String line = "";
 			try{
 				csvReader = new Scanner(inputFile);
 				String headline = csvReader.nextLine();
@@ -88,6 +108,10 @@ public class smoother {
 				System.out.println("ERROR1" + e.toString() + "THIS IS LINE: "+ line);
 			}
 	}
+	/**
+     * This method was created to print out an array for testing purposes
+     * @param list
+     */
 	public void printArrayList(ArrayList<Double> list){
         for(int i =0; i < list.size(); i++){
             if(i == list.size()-1){
@@ -97,95 +121,18 @@ public class smoother {
             }
         }
     }
+	/**
+	 * Getter for xValList
+	 * @return ArrayList<Double> xValList
+	 */
 	public ArrayList<Double> getXArray(){
 		return xValList;
 	}
+	/**
+	 * Getter for yValList
+	 * @return ArrayList<Double> yValList
+	 */
 	public ArrayList<Double> getYArray(){
 		return yValList;
 	}
 }
-
-/**
-	 * 
-		//creating variables
-        bufferWriter = new BufferedWriter(fileWriter);
-        ArrayList<Double> xValList = new ArrayList<>(); 
-        ArrayList<Double> yValList = new ArrayList<>(); 
-		int count = 0;
-		double yVal;
-		double temp = 0;
-		double temp2 = 0;
-		int diff = 0;
-		//create top of csv
-		try {
-		csvReader = new Scanner(inputFile);
-		bufferWriter.write("X " + "," + " Y \n");
-		} catch (Exception e) {
-			System.out.println("ERROR OCCURED: " + e.toString() + "0");
-		}
-		//go through csv and add vals to arraylists
-		while(csvReader.hasNextLine()){	
-		    try {
-			    String line = csvReader.next();
-			    int comma = line.indexOf(",");
-			    if(count >= 1){
-				    double x = Double.valueOf(line.substring(0,comma));
-				    double y = Double.valueOf(line.substring(comma+1));
-				    xValList.add(x);
-                    yValList.add(y);
-			    }
-			} catch (Exception e) {
-				    System.out.println("ERROR OCCURED: " + e.toString() + " 4319");
-			    }
-			count++;
-		}
-		//smooth out data 
-		for(int i = 0; i < xValList.size(); i++){
-			yVal = yValList.get(i);
-			int check = 0;
-			for(int j =0; j < window; j++){
-				double val = yValList.get(i+j);
-				temp += val;
-			}
-			//fix
-			if(i - window < 0){
-				diff = Math.abs(i-window);
-				check = 1;
-				for(int k=i-1; k > diff; i--){
-					double prev = yValList.get(k-diff);
-					temp2 += prev;
-				}
-			}else{
-				for(int m = i-1; m > window; m--){
-					double prev = yValList.get(m);
-					temp2 += prev;
-				}
-			}
-			//fix
-			double newVal = temp + temp2 + yValList.get(i);
-			if(check == 1){
-				int divide = window + diff + 1;
-				newVal = newVal/divide;
-			}else{
-				newVal = newVal/(window + window + 1);
-			}
-			yValList.set(i, newVal);
-		}
-
-		for(int i = 0; i < xValList.size(); i++){
-			double n1 = xValList.get(i);
-			double n2 = yValList.get(i);
-			try {
-				bufferWriter.write( n1 + "," + n2 + "\n");
-			} catch (IOException e) {
-				System.out.println("ERROR OCCURED: " + e.toString() + "2");
-				e.printStackTrace();
-			}
-		}
-		try {
-			bufferWriter.close();
-			} catch (IOException e) {
-				
-			e.printStackTrace();
-			}
-	 */

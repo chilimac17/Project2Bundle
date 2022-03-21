@@ -9,7 +9,7 @@ public class StatsLib {
 
     
     /**
-     * this method will get the mean of an array of ints 
+     * This method will get the mean of an array of ints 
      * first checks if the list is empty
      * then loops through the list and add all the values in the list 
      * after the loop it will divide by the size of the list and return the mean
@@ -29,7 +29,7 @@ public class StatsLib {
         return answer;
     }
     /**
-     * this method will get the mean of an array list of doubles
+     * This method will get the mean of an array list of doubles
      * first checks if the list is empty
      * then loops through the list and add all the values in the list
      *  after the loop it will divide by the size of the list and return the mean
@@ -49,7 +49,7 @@ public class StatsLib {
     }
     
     /**
-     * this method will return the median of a list of ints
+     * This method will return the median of a list of ints
      * runs a check if the list is empty it will return 0
      * after it will check if the list is even or odd
      * if the list is even then it will take the two middle values add them then divide by 2
@@ -71,7 +71,7 @@ public class StatsLib {
         return result;
     }
     /**
-     * this method will return the mode of a list of ints
+     * This method will return the mode of a list of ints
      * runs a check if the list is empty if it is return 0
      * then it will use a double for loop to check the values 
      * if a value occurs more than once a counter will be increased
@@ -109,7 +109,7 @@ public class StatsLib {
         
     */
     /**
-     * this method will take in a list of ints and return the standard deviation
+     * This method will take in a list of ints and return the standard deviation
      * it follows the standard deviation formaula
      *  -gets mean of a list
      *  -subtracts the mean from every value in the list
@@ -141,7 +141,7 @@ public class StatsLib {
     }
 
     /**
-     * this method is almost a exact copy of the standard deviation formula 
+     * This method is almost a exact copy of the standard deviation formula 
      * except it does not take the squre root of the final answer and will return the variance 
      * steps as followed:
      * -gets mean of a list
@@ -171,7 +171,7 @@ public class StatsLib {
     }
     
     /**
-     * this method is created to get the factorial of a number 
+     * This method is created to get the factorial of a number 
      * this method will assist in finding the combination and permutaion probability 
      * first i used a for loop to calcuate this which works perfectly fine
      * but i realized that you can use recursion to get the same result and write less code 
@@ -194,7 +194,7 @@ public class StatsLib {
     }
     
     /**
-     *  this method will use the factoral method above to find the combination probability
+     *  This method will use the factoral method above to find the combination probability
      *  it follows the formula: (n!) / (r)!*(n-r)!
      * @param n
      * @param r
@@ -207,7 +207,7 @@ public class StatsLib {
 	}
     
     /**
-     * this method will use the factoral method above to find the permutation probability
+     * This method will use the factoral method above to find the permutation probability
      * it follows the formula: (n!) / (n-r)!
      * @param n
      * @param r
@@ -221,7 +221,7 @@ public class StatsLib {
    
     /**
      *  ** for this method i used arraylists of strings with days of the week **  
-     * this method will take in two arrays lists of strings and return the union of both lists
+     *  This method will take in two arrays lists of strings and return the union of both lists
      *  first i create a new array list that will return in the end
      *  then i loop through the first list adding every value in the new list
      *  next i loop throug the second list and i check with an if statement
@@ -247,7 +247,7 @@ public class StatsLib {
     }
     
     /**
-     * this method will take in two arraylists and return the intersection of two arraylist
+     * This method will take in two arraylists and return the intersection of two arraylist
      * first i created a new arraylist to return and created a for loop that loops through the 
      *  first list. As its going through the first list it will run a if statement to check if 
      *  list 2 contains the element at position i. if it is true then it will add it to the new list
@@ -270,7 +270,7 @@ public class StatsLib {
     }
     
     /**
-     * this method will take in one array list and return the compliment of it
+     * This method will take in one array list and return the compliment of it
      * to make this work with my days of the week examples i created a array that has 
      * all of the days of the week in it. Also I created a new arraylist to return at the end.
      * I run through a loop through the premade list then i run a check if the list that was input does not
@@ -292,7 +292,7 @@ public class StatsLib {
         return complimentList;
     }
     /**
-     * this method takes in the probability of your favorable event as p and takes the compliment of
+     * This method takes in the probability of your favorable event as p and takes the compliment of
      * that probability as q. The number of trials as n and number of times for a specific outcomes from
      * n trials. 
      * @param p
@@ -310,7 +310,7 @@ public class StatsLib {
          return binomialDistribution;
     }
     /**
-     * this method takes in the probability of your favorable event as p.
+     * This method takes in the probability of your favorable event as p.
      * The number of trials as n and number of times for a specific outcomes from
      * n trials. 
      * @param p
@@ -329,7 +329,10 @@ public class StatsLib {
     }
      
     /**
-     * extra credit handles <=,>=
+     * extra credit handles <=,>=:
+     * This method takes in the probability of your favorable event as p.
+     * The number of trials as n and number of times for a specific outcomes from
+     * n trials. 
      * @param p
      * @param q
      * @param n
@@ -372,8 +375,8 @@ public class StatsLib {
         return binomialDistribution;
     }
     /**
-     * extra credit handles <=,>=
-     * this method takes in the probability of your favorable event as p.
+     * Extra Credit Handles <=,>=
+     * This method takes in the probability of your favorable event as p.
      * The number of trials as n and number of times for a specific outcomes from
      * n trials. It also takes in a string that can either be <= or >= to show ------
      * 
@@ -508,7 +511,7 @@ public class StatsLib {
         return val.multiply(factorialOfBigInts(n-1));
     }
     /**
-     * this method is used to populate an array list.
+     * This method is used to populate an array list.
      * it will be used for testing the union, intersection, and compliment methods above
      * @param test
      * @return a list populated with strings of days of the week
@@ -521,7 +524,7 @@ public class StatsLib {
         return test;
     }
     /**
-     * this method is used to populate an array list.
+     * This method is used to populate an array list.
      * it will be used for testing the union, intersection, and compliment methods above
      * @param test
      * @return a list populated with strings of days of the week
@@ -534,8 +537,8 @@ public class StatsLib {
         return test;
     }
     /**
-     * this method is used to populate an array list.
-     * it will be used for testing the union, intersection, and compliment methods above
+     * This method is used to populate an array list.
+     * it will be used for testing the union, intersection, and compliment methods above.
      * @param test
      * @return a list populated with strings of days of the week
      */
@@ -546,9 +549,10 @@ public class StatsLib {
         }
         return test;
     }
-    /*
-        this method was created to print out an array for testing purposes
-    */
+    /**
+     * This method was created to print out an array for testing purposes.
+     * @param list
+     */
     public void printArray(int[] list){
         for(int i =0; i < list.length; i++){
             if(i == list.length-1){
@@ -558,9 +562,10 @@ public class StatsLib {
             }
         }
     }
-    /*
-        this method was created to print out an arraylists for testing purposes
-    */
+    /**
+     * This method was created to print out an arraylists for testing purposes.
+     * @param list
+     */
     public void printArrayList(ArrayList<String> list){
         for(int i =0; i < list.size(); i++){
             if(i == list.size()-1){
@@ -572,7 +577,7 @@ public class StatsLib {
     }
    
     /**
-     * This method tests methods above
+     * This method tests the methods created above.
      */
     public void results(){
         int[] testList = {2,5,5,7,17,17,17,23,56,87,99};
@@ -598,7 +603,7 @@ public class StatsLib {
         System.out.println("The union of the list 1 and list 2 is " + getUnion(test1, test2));
         System.out.println("The intersection of the list 1 and list 2 is " + getIntersection(test1, test2));
         System.out.println("The compliment of the list 3 is " + getCompliment(test3));
-        
+        //ec = extra credit, extra methods created to handle other cases
         System.out.println("Binomial Dis: " + getBinomialDistribution(0.2, 0.8, 3, 2));
         System.out.println("Binomial Dis2: " + getBinomialDistribution2(0.2, 3, 2));
         System.out.println("Binomial DisEC: " + getBinomialDistributionEC(0.2, 0.8, 3, 2, "<="));
