@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import StatsLib.StatsLib;
+
 public class smoother {
 	private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
@@ -25,41 +27,52 @@ public class smoother {
 		}
     }
 	//methods
-    public void createSmoothData(){
+    public void createSmoothData(int windowNum){
 		//add window = 2
 		bufferWriter = new BufferedWriter(fileWriter);
-         
+         ArrayList<Double> newYVal = new ArrayList<>();
 		//reading csvfile and filling x and y values in the lists created above
 		csvToArrayList(xValList,yValList);
-		printArrayList(yValList);
-		yValList = smoothData(yValList);
+		newYVal = smoothData(yValList,windowNum);
 
 		try {
 			bufferWriter.write("X " + "," + " Y \n");
-			} catch (Exception e) {
-				System.out.println("ERROR OCCURED: " + e.toString() + "0");
-			}
 			for(int i = 0; i < xValList.size(); i++){
 				double n1 = xValList.get(i);
-				double n2 = yValList.get(i);
-				try {
-					bufferWriter.write( n1 + "," + n2 + "\n");
-				} catch (IOException e) {
-					System.out.println("ERROR OCCURED: " + e.toString() + "2");
-					e.printStackTrace();
-				}
+				double n2 = newYVal.get(i);
+				bufferWriter.write( n1 + "," + n2 + "\n");
 			}
-			try {
-				bufferWriter.close();
-				} catch (IOException e) {
-					
-				e.printStackTrace();
-				}
-				
+			bufferWriter.close();
+			} catch (Exception e) {
+				System.out.println("ERROR OCCURED: " + e.toString() + "0");
+			}			
     }
-	public ArrayList<Double> smoothData(ArrayList<Double> list){
+	public ArrayList<Double> smoothData(ArrayList<Double> list,int windowNum){
 		ArrayList<Double> newList = new ArrayList<>();
-		
+		double sum = 0;
+		double avg = 0;
+		int count = windowNum+1;
+		//if size of list is smaller than the window 
+		for(int i = 0; i < list.size(); i++){
+			int startIndex = i - windowNum;
+			int endIndex = i + windowNum;
+			if(i == 0 ){
+				for(int j = 0; j < windowNum+1; j++){
+					sum += list.get(j);
+				}
+			}else if(startIndex < 0 && i != 0){
+				sum += list.get(endIndex);
+				count++;
+			}else if(endIndex >= list.size()){
+				sum -= list.get(startIndex);
+				count--;
+			}else{
+				sum -= list.get(startIndex);
+				sum += list.get(endIndex);
+			}
+			avg = sum / count;
+			newList.add(i, avg);
+		}
 		return newList;
 	}
 	public void csvToArrayList(ArrayList<Double> xlist,ArrayList<Double> ylist){

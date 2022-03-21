@@ -28,6 +28,25 @@ public class StatsLib {
         answer = answer / list.length;
         return answer;
     }
+    /**
+     * this method will get the mean of an array list of doubles
+     * first checks if the list is empty
+     * then loops through the list and add all the values in the list
+     *  after the loop it will divide by the size of the list and return the mean
+     * @param list
+     * @return double mean
+     */
+    public double getMeanArrayList(ArrayList<Double> list){
+        double answer = 0; 
+        if(list.size() == 0){
+            return 0;
+        }
+        for(int i = 0; i < list.size(); i++){
+            answer += list.get(i);
+        }
+        answer = answer / list.size();
+        return answer;
+    }
     
     /**
      * this method will return the median of a list of ints
