@@ -51,7 +51,7 @@ public class salter {
 	
 	}
 	/**
-	 * This method takes in a ArrayList as input displayed as y values and will salt the data. Meaning it will add or subtract a random number from 1-600. 
+	 * This method takes in a ArrayList as input displayed as y values and will salt the data. Meaning it will add or subtract a random number from 1-100000. 
 	 * @param yList
 	 * @return ArrayList<Double> newList
 	 */
@@ -60,7 +60,7 @@ public class salter {
 		ArrayList<Double> newList = new ArrayList<>();
 		for(int i = 0; i < yList.size(); i++){
 			double y = yList.get(i);
-			int addOrSub = rng.nextInt(600) + 1;
+			int addOrSub = rng.nextInt(100000) + 1;
         	int decision = rng.nextInt(2);
         	if(decision == 0){
            	 y = y + addOrSub;
