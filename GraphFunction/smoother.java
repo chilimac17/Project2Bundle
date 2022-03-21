@@ -3,12 +3,8 @@ package GraphFunction;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import StatsLib.StatsLib;
-
 public class smoother {
 	private FileWriter fileWriter;
     private BufferedWriter bufferWriter;
