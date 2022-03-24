@@ -7,7 +7,7 @@ public class Tester {
          * Creating Hand Evaluator object and calling test method. Number of runs is the input adjustable.
          */
         HandEvaluator n1 = new HandEvaluator();
-        n1.testAll(10000);
+        n1.testAll(1000000);
     }
     
 }
