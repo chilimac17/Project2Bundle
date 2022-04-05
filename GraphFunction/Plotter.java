@@ -2,7 +2,7 @@ package GraphFunction;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.io.BufferedWriter;
-public class plotter {
+public class Plotter {
     /**
 	 * Global Variables
 	 */
@@ -13,7 +13,7 @@ public class plotter {
 	/**
 	 * This constructor will use filewriter to create a .CSV file 
 	 */
-	public plotter() {
+	public Plotter() {
 		try {
 			fileWriter = new FileWriter("Plotter.csv");
 		} catch (Exception e) {

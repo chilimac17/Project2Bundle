@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-public class smoother {
+public class Smoother {
 	/**
 	 * Global Variables
 	 * **File Path: ~/Code/GitHub/Project2Bundle/Salter.csv**
@@ -19,7 +19,7 @@ public class smoother {
 	/**
 	 * This constructor will use filewriter to create a .CSV file 
 	 */
-    public smoother(){
+    public Smoother(){
         try {
 			fileWriter = new FileWriter("Smoother.csv");
 		} catch (Exception e) {

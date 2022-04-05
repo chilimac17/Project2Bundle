@@ -6,13 +6,13 @@ public class Results {
      */
    public void results(){
         try {
-            plotter p1 = new plotter();
+            Plotter p1 = new Plotter();
             p1.createData();
             Thread.sleep(3000);
-            salter s1 = new salter();
+            Salter s1 = new Salter();
             s1.createSaltData();
             Thread.sleep(3000);
-            smoother sm1 = new smoother();
+            Smoother sm1 = new Smoother();
             sm1.createSmoothData(2);
         } catch (Exception e) {
             System.out.println("ERROR: " + e.toString());

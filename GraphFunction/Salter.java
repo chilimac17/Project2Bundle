@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-public class salter {
+public class Salter {
 	/**
 	 * Global Variables
 	 * **File Path: ~/Code/GitHub/Project2Bundle/Plotter.csv**
@@ -19,7 +19,7 @@ public class salter {
     /**
 	 * This constructor will use filewriter to create a .CSV file 
 	 */
-    public salter(){
+    public Salter(){
         try {
 			fileWriter = new FileWriter("Salter.csv");
 		} catch (Exception e) {
